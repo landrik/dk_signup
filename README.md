@@ -1,5 +1,7 @@
 # README #
 
+Please clone this repo and add instructions on how to set it up.
+
 ### Tools ###
 Feel free to use whatever tool/framework you think is appropriate to complete this exercise.
 
