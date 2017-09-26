@@ -1,7 +1,6 @@
 
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
-var customizeBootstrap = require('gulp-customize-bootstrap');
 var sass        = require('gulp-sass');
 var bootstrap_sass = 'node_modules/bootstrap/scss/';
 
@@ -13,13 +12,6 @@ gulp.task('sass', function() {
         .pipe(gulp.dest("src/css"))
         .pipe(browserSync.stream());
 });
-
-// gulp.task('compileBootstrap', function() {
-//   return gulp.src('node_modules/bootstrap/scss/bootstrap.scss')
-//     .pipe(customizeBootstrap('src/scss/*.scss'))
-//     .pipe(sass())
-//     .pipe(gulp.dest('src/css'));
-// });
 
 // Move the javascript files into our /src/js folder
 gulp.task('js', function() {
