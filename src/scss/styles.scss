@@ -1,0 +1,350 @@
+// DK signup to newletter
+// Bootstrap
+// -----------------------------------------------------
+@import "variables";
+@import "normalize";
+body {
+    background: $body-bg;
+}
+
+
+$web-font-path: "https://fonts.googleapis.com/css?family=News+Cycle:400,700" !default;
+
+@import url($web-font-path);
+
+// Navbar =====================================================================
+
+.navbar {
+  font-size: 18px;
+  font-family: $font-family-sans-serif;
+  font-weight: $headings-font-weight;
+  &-default {
+    .badge {
+      background-color: #000;
+      color: #fff;
+    }
+    .navbar-toggle {
+      position: relative;
+      padding-top: 10px;
+      z-index: 100;
+      height: auto;
+      padding: 25px 0px;
+       .navbar-toggler{
+         margin-top: -20px;
+       }
+
+    }
+  }
+  &-inverse {
+    .badge {
+      background-color: #fff;
+      color: $navbar-inverse-bg;
+    }
+  }
+  &-header{
+    padding: 2px 0;
+
+    .form-control{border:none}
+  }
+  &-brand {
+    font-size: inherit;
+    font-weight: $headings-font-weight;
+    text-transform: uppercase;
+    img{
+      width:100px
+    }
+  }
+  &-menu{
+    border: 1px solid $navbar-default-border;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+  }
+  .input-group{
+    background: $gray-lighter;
+  }
+  .input-group-btn:not(:last-child) > .btn{
+    background:transparent url('../assets/icon-search.svg') no-repeat center center;
+    text-indent: -999em;
+    background-size: 62%;
+  }
+}
+.nav{
+  // flex-flow: row wrap;
+  li{
+    // width:auto;
+    a{
+      padding: 14px 20px;
+      text-transform: uppercase;
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: $navbar-default-link-color
+    }
+  }
+  > .active{
+    background-color: $gray-lighter;
+  }
+}
+.breadcrumb {
+  list-style: none;
+  background-color: $breadcrumb-bg;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding-top: 1.25rem;
+  padding-left:0;
+
+  > li {
+    display: inline-block;
+
+    + li:before {
+      // [converter] Workaround for https://github.com/sass/libsass/issues/1115
+      $nbsp: "\00a0";
+      content: "#{$breadcrumb-separator}#{$nbsp}"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: $breadcrumb-color;
+    }
+  }
+
+  > .active {
+    color: $breadcrumb-active-color;
+  }
+}
+
+
+// Buttons ====================================================================
+[type="submit"] {
+  width:auto;
+  padding: 0.8rem 2rem;
+  margin-top:20px;
+  background: #e30613;
+  border: 0;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight:200
+}
+// Typography =================================================================
+html{
+  font-size: 16px;
+}
+
+body{
+  font-size: 0.86rem
+}
+
+
+// Tables =====================================================================
+
+// Forms ======================================================================
+
+.form-group {
+  label{display: none}
+  .form-control{
+    height: auto !important;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    background: transparent;
+    border-color:$input-border;
+    font-size: 0.85rem;
+    font-weight: 200;
+    padding: 0.85rem 0.75rem;
+  }
+}
+
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  & + label {
+    position: relative;
+    padding-left: 1.95em;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 1.25em; height: 1.25em;
+      border:1px solid $input-border;
+      background: #fff;
+    }
+    &:after {
+      content: '✔';
+      position: absolute;
+      top: .1em; left: .3em;
+      font-size: 1.3em;
+      line-height: 0.8;
+      color: $input-border;
+      transition: all .2s;
+    }
+  }
+}
+
+
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before,
+label:hover:before {
+  border: 2px solid #000 !important;
+}
+
+
+.has-warning {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: $brand-danger;
+  }
+
+  .form-control,
+  .form-control:focus {
+    border-color: $brand-danger;
+  }
+}
+.has-error {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: $brand-primary;
+  }
+
+  .form-control,
+  .form-control:focus,
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before {
+    border-color: $brand-primary;
+  }
+}
+.has-success {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: $brand-success;
+  }
+
+  .form-control,
+  .form-control:focus {
+    border-color: $brand-success;
+  }
+}
+
+.select{
+  position: relative;
+  &:after{
+    content:"change location";
+    position: absolute;
+    top: 13px;
+    right: 25px;
+    z-index: 100;
+    font-size: 12px;
+    pointer-events: none;
+  }
+}
+
+header{
+  .pull-right{
+    display: inline-flex;
+    margin-top: 18px;
+  }
+  .form-group{
+    width:300px
+  }
+  a.shopping-cart{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    display: inline-block;
+    padding: 14px;
+    clear: right;
+    vertical-align: top;
+    background: transparent url(../assets/shopping-cart.svg) no-repeat 0 0;
+    margin: 7px 0 0 18px
+  }
+}
+// Navs =======================================================================
+
+
+// Indicators =================================================================
+
+.badge {
+  padding-bottom: 4px;
+  vertical-align: 3px;
+  font-size: 10px;
+}
+
+// Progress bars ==============================================================
+
+// Containers =================================================================
+
+.container {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-sans-serif;
+    font-weight: $headings-font-weight;
+    color: #000;
+  }
+   div.row-fluid:last-child{
+    margin-top:30px;
+    padding-top:30px;
+    border-top:1px solid $input-border
+  }
+}
+
+.panel {
+
+  &-primary,
+  &-success,
+  &-warning,
+  &-danger,
+  &-info {
+    .panel-title {
+      color: #fff;
+    }
+  }
+
+
+}
