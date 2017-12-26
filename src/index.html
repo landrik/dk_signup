@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/css/styles.css">
     </head>
 
-    <body>
+    <body ng-app="myApp" ng-controller="mainCtrl">
           <header class="head-wrap">
             <div class="navbar navbar-default">
               <div class="container">
@@ -69,89 +69,88 @@
             </div>
           </header>
           <main class="content-wrap">
-              <div class="container">
-                <h3>Newsletter</h3>
-                <form action="" method="POST" id="form">
+            <div class="container">
+              <form method="POST" id="form" name="myForm" ng-submit="submitForm()" novalidate>
                 <div class="row-fluid">
-                  <p>By signing up to receive emails from DK you'll be the first to hear about our new books, offers and competitions.</p>
-                  <p>The extra information that you provide in this section (age, postcode and interests) allows us to personalise your emails
-                    and to understand you, our readers, better. This extra information is not mandatory.</p>
-                </div>
+                <p>By signing up to receive emails from DK you'll be the first to hear about our new books, offers and competitions.</p>
+                <p>The extra information that you provide in this section (age, postcode and interests) allows us to personalise your emails
+                  and to understand you, our readers, better. This extra information is not mandatory.</p>
+              </div>
                 <div class="row-fluid">
-                  <div class="row">
-                      <div class="col-md-6 col-sm-12 form-group">
-                        <label title="First Name" for="first_name"> First Name: * </label>
-                        <input class="form-control" id="first_name" type="text" name="first_name" data-validation="required" data-validation-error-msg="Please enter your first name" placeholder="First Name*" />
-                      </div>
-                      <div class="col-md-6 col-sm-12 form-group">
-                        <label title="Last Name" for="last_name"> Last Name: * </label>
-                        <input class="form-control" id="last_name" type="text" name="last_name" data-validation="required" data-validation-error-msg="Please enter your last name" placeholder="Last Name*" />
-                      </div>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 form-group">
+                    <label title="First Name" for="first_name"> First Name: * </label>
+                    <input class="form-control" type="text" name="first_name" ng-model="data.first_name" placeholder="First Name*" required />
                   </div>
-                  <div class="row">
-                      <div class="col-md-6 col-sm-12 form-group">
-                        <label title="Email" for="email"> Email: * </label>
-                        <input class="form-control" id="email" type="text" name="email" data-validation="email, required" data-validation-error-msg="Please enter a valid email adress" value="" placeholder="Email*" />
-                      </div>
-                      <div class="col-md-6 col-sm-12 form-group select">
-                        <label title="location" for="location"> Your location: </label>
-                        <!--input class="form-control" id="location" type="text" name="postcode" placeholder="United Kingdom" /-->
-                        <select class="form-control" id="location" name="location">
-                            <option value='united kingdom'>United Kingdom</option>
-                            <option value='usa'>United States</option>
-                            <option value='canada'>Canada</option>
-                            <option value='india'>India</option>
-                        </select>
-                      </div>
+                  <div class="col-md-6 col-sm-12 form-group">
+                    <label title="Last Name" for="last_name"> Last Name: * </label>
+                    <input class="form-control" type="text" name="last_name" ng-model="data.last_name" placeholder="Last Name*" required />
                   </div>
                 </div>
-                <div class="row-fluid">
-                    <h5>Select areas of interests: </h5>
-                    <div class="row checkbox_group">
-                      <ul class="col-md-3">
-                        <li><input id="childrens" type="checkbox" value="childrens" data-validation="checkbox_group" name="topic" data-validation-error-msg-container="#errorMessage" data-validation-qty="1" data-validation-error-msg="Please select at least one topic" /><label for="childrens"> Children's </label></li>
-                        <li><input id="crafts" type="checkbox" value="crafts" name="topic[]"><label for="crafts"> Crafts &amp; Hobbies </label></li>
-                        <li><input id="popularculture" type="checkbox" value="popularculture" name="topic[]"><label for="popularculture"> Film &amp; TV </label></li>
-                        <li><input id="food" type="checkbox" value="food" name="topic[]"><label for="food"> Food &amp; Drink </label></li>
-                        <li><input id="gardening" type="checkbox" value="gardening" name="topic[]"><label for="gardening"> Gardening </label></li>
-                      </ul>
-                      <ul class="col-md-3">
-                        <li><input id="health" type="checkbox" value="health" dname="topic[]" /><label for="health"> Health &amp; Beauty </label></li>
-                        <li><input id="history" type="checkbox" value="history" name="topic[]" /><label for="history"> History </label></li>
-                        <li><input id="lego" type="checkbox" value="lego" name="topic[]" /><label for="lego"> LEGO® </label></li>
-                        <li><input id="pregnancy" type="checkbox" value="pregnancy" name="topic[]" /><label for="pregnancy"> Parenting </label></li>
-                        <li><input id="relationships" type="checkbox" value="relationships" name="topic[]" /><label for="relationships"> Relationships </label></li>
-                      </ul>
-                      <ul class="col-md-3">
-                        <li><input id="science" type="checkbox" value="science" name="topic[]" /><label for="science"> Science &amp; Nature </label></li>
-                        <li><input id="sports" type="checkbox" value="sports" name="topic[]" /><label for="sports"> Sports &amp; Fitness </label></li>
-                        <li><input id="starwars" type="checkbox" value="starwars" name="topic[]" /><label for="starwars"> Star Wars™ </label></li>
-                      </ul>
-                      <span class="col-md-12" id="errorMessage"></span>
-                    </div>
-                 </div>
-                 <div class="row-fluid">
-                   <div class="row">
-                     <ul class="col-md-12">
-                       <li><input id="age" type="checkbox" value="age" data-validation="required" data-validation-error-msg="Please confirm you are over 16" name="age" /><label class="col-md-12" for="age"> I can confirm that I am 16 years of age</label></li>
-                       <li><input id="policy" type="checkbox" value="policy" data-validation="required" data-validation-error-msg="Please agree to the terms of the Privacy Policy" name="policy" /><label class="col-md-12" for="policy"> I agree to the terms of the Privacy Policy</label></li>
-                     </ul>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 form-group">
+                    <label title="Email" for="email"> Email: * </label>
+                    <input class="form-control" type="text" name="email" ng-model="data.email" placeholder="Email*" required />
                   </div>
-
-                  <input type="submit" class="button" id="submitButton" name="submitButton" title="Sign up" value="Sign up" />
-                </form>
+                  <div class="col-md-6 col-sm-12 form-group select">
+                    <label title="country" for="country"> Your location: </label>
+                    <select class="form-control" name="country" ng-model="data.country" ng-options="country.name for country in countries track by country.code" required></select>
+                  </div>
                 </div>
               </div>
+                <div class="row-fluid">
+                  <h5>Select areas of interests: </h5>
+                  <div class="row checkbox_group">
+                    <div class="container">
+                      <ul class="topicList">
+                        <li class="checkbox" ng-repeat="topic in topicList">
+                              <input type="checkbox" name="" value="{{topic.label}}" ng-model="topic.selected" ng-change="toggleItem(topic)" ng-checked="selectedTopics.indexOf(topic) > -1"
+                      ng-required="selectedTopics.length == 0" /> <label class="checkbox-inline" for="">{{topic.label}}</label>
+                            </li>
+                    </ul>
+                      <p ng-if="onceIfCheck">You have to check at least one item</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                <div class="row">
+                  <div class="container">
+                    <ul class="form-check">
+                      <li class="checkbox">
+                        <input id="age" type="checkbox" value="age" data-validation="required" data-validation-error-msg="Please confirm you are over 16" name="age" />
+                        <label class="col-md-12" for="age"> I can confirm that I am 16 years of age</label></li>
+                      <li class="checkbox">
+                        <input id="policy" type="checkbox" value="policy" data-validation="required" data-validation-error-msg="Please agree to the terms of the Privacy Policy" name="policy" />
+                        <label class="col-md-12" for="policy"> I agree to the terms of the Privacy Policy</label></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                <input class="btn btn-primary" type="submit" title="Sign up" value="Sign up" ng-disabled="myForm.$invalid" />
+              </form>
+            </div>
           </main>
           <footer class="foot-wrap"></footer>
 
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/tether.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/jquery.form-validator.min.js"></script>
+          <!-- Modal -->
+          <modal-dialog show='modalShown' width='750px'>
+              <div class="modal-cont">
+                <p>Thank you {{ data.first_name }} <b>{{ data.last_name }}</b> from {{ data.country.name }}.</p>
+                <p>You'll be recieving our newsletters about <span ng-repeat="item in selectedTopics">{{ item.label }}{{$last ? '' : ', '}}</span> in your {{ data.email }} email.</p>
+              </div>
+            </modal-dialog>
+
+          <!-- Modal -->
+          <!-- <message-modal id="thank-you" ng-show='submitted && signup.$valid'>
+            <p>Thank you {{ formData.first_name }} {{ formData.last_name }} from {{ formData.location }}. </p>
+            <p>You'll be receiving our newsletters about {{ formData.interests }} in your {{ formData.email }} email.</p>
+          </message-modal> -->
+
+        <!--script src="/js/jquery.min.js"></script-->
+        <script src="/js/angular.min.js"></script>
+        <!--script src="https://code.angularjs.org/1.4.0-rc.1/angular.js"></script-->
+        <!--script src="/js/tether.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script-->
         <script src="/js/custom.js"></script>
-        <script>
-          $.validate();
-        </script>
     </body>
 </html>

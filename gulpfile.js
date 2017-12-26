@@ -15,7 +15,7 @@ gulp.task('sass', function() {
 
 // Move the javascript files into our /src/js folder
 gulp.task('js', function() {
-    return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/tether/dist/js/tether.min.js','node_modules/jquery-form-validator/form-validator/jquery.form-validator.min.js'])
+    return gulp.src(['node_modules/angular-bootstrap-starter/www/lib/angular/js/angular.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/tether/dist/js/tether.min.js','node_modules/jquery-form-validator/form-validator/jquery.form-validator.min.js'])
         .pipe(gulp.dest("src/js"))
         .pipe(browserSync.stream());
 });
